@@ -60,7 +60,7 @@
                 <button id="loginBtn" class="btn-login" onclick="showLogin()">🔐 Login</button>
                 <button id="logoutBtn" class="btn-logout" onclick="logout()" style="display: none;">Logout</button>
                 <button id="addMoneyBtn" class="btn-add-money" onclick="showAddMoney()" style="display: none;">💰 Pul qo'shish</button>
-                <button id="teacherBtn" class="btn-teacher-action" onclick="showTeacherPanel()">👨‍🏫 Dolma Panel</button>
+                <button id="teacherBtn" class="btn-teacher-action" onclick="showTeacherPanel()">👨‍🏫 Ustoz Panel</button>
             </div>
         </div>
         <div class="courses" id="coursesList"></div>
@@ -71,7 +71,7 @@
             <h2>🔐 Login</h2>
             <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="email@domen.com"></div>
             <div class="form-group"><label>Parol</label><input type="password" id="loginPassword" placeholder="Parolni kiriting"></div>
-            <div class="form-group"><label>Kim siz?</label><select id="loginType" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px;"><option value="user">O'quvchi</option><option value="teacher">Dolma</option></select></div>
+            <div class="form-group"><label>Kim siz?</label><select id="loginType" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px;"><option value="user">O'quvchi</option><option value="teacher">Ustoz</option></select></div>
             <div class="modal-footer"><button class="btn-cancel" onclick="closeLogin()">Bekor qilish</button><button class="btn-confirm" onclick="login()">Kirish</button></div>
         </div>
     </div>
@@ -99,8 +99,8 @@
 
     <div id="teacherModal" class="modal">
         <div class="modal-content" style="max-width: 700px;">
-            <h2 id="teacherModalTitle">👨‍🏫 Dolma Panel</h2>
-            <div class="form-group"><label>Dolma balansi</label><div class="total-price" id="teacherBalance" style="font-size: 2em;">0 so'm</div></div>
+            <h2 id="teacherModalTitle">👨‍🏫 Ustoz Panel</h2>
+            <div class="form-group"><label>Ustoz balansi</label><div class="total-price" id="teacherBalance" style="font-size: 2em;">0 so'm</div></div>
             <div id="teacherContent" style="max-height: 500px; overflow-y: auto;">
                 <div class="form-group"><label>Band qilingan o'quvchilar:</label>
                     <ul id="studentsList" style="padding-left: 20px; margin: 10px 0;"></ul>
@@ -214,7 +214,7 @@
 
         function openBooking(course, price) {
             if (!currentUser) { alert('⚠️ Avval login bo\'ling!'); showLogin(); return; }
-            if (currentUser.type === 'teacher') { alert('❌ Dolma siz kurs band qila olmaysiz!'); return; }
+            if (currentUser.type === 'teacher') { alert('❌ Ustoz siz kurs band qila olmaysiz!'); return; }
             document.getElementById('selectedCourse').value = course;
             document.getElementById('selectedPrice').value = price;
             document.getElementById('fullName').value = ''; document.getElementById('phone').value = '';
@@ -228,7 +228,7 @@
 
         function submitBooking() {
             if (!currentUser) { alert('⚠️ Avval login bo\'ling!'); showLogin(); return; }
-            if (currentUser.type === 'teacher') { alert('❌ Dolma siz kurs band qila olmaysiz!'); return; }
+            if (currentUser.type === 'teacher') { alert('❌ Ustoz siz kurs band qila olmaysiz!'); return; }
             const course = document.getElementById('selectedCourse').value;
             const fullName = document.getElementById('fullName').value.trim();
             const phone = document.getElementById('phone').value.trim();
